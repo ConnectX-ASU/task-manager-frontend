@@ -1,0 +1,6 @@
+
+
+.circle__progress{
+  fill: none;
+  stroke: var(--primary);
+}
