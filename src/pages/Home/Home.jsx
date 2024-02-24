@@ -1,13 +1,7 @@
 import React from 'react'
-import 'chart.js/auto';
-
-import BarChart from '../../components/Pages/statistics/BarChart';
-import Box from '../../components/Shared/Box/Box';
-import PieChart from '../../components/Pages/statistics/PieChart';
 import LineChart from '../../components/Pages/statistics/LineChart';
-import TasksBoxes from '../../components/Pages/statistics/TasksBoxes';
+import TasksInProgress from '../../components/Pages/Home/TasksInProgress';
 
-//Dummy Data for sprint 1
 const finishedTasks = [
 	{
 		name: '7agz kora',
@@ -71,20 +65,25 @@ const finishedTasks = [
 	},
 ]
 
-export default function Statistics() {
-
+export default function Home() {
 	return (
-			<div className='py-8 px-16'>
-				<div className='py-8 flex flex-row flex-wrap gap-8 justify-start items-center'>
-					<LineChart finishedTasks={finishedTasks} />
-					<Box width={400} height={400}>
-						<PieChart finishedTasks={finishedTasks} />
-					</Box>
-					<Box width={250} height={400}>
-						<BarChart />
-					</Box>
-					<TasksBoxes/>
-				</div>
+		<div className='py-8 px-16 space-y-10'>
+		<div className="flex flex-row gap-8">
+			<div className="boxShadow gradient3 flex flex-col w-1/3 justify-center items-center gap-6 p-6 bg-[var(--primary)] rounded-xl boxShadow">
+				<h1 className='text-xl font-semibold'>Tasks Completed</h1>
+				<h2>7</h2>
 			</div>
+			<div className="boxShadow gradient4 flex flex-col w-1/3 justify-center items-center gap-6 p-6 bg-[var(--primary)] rounded-xl boxShadow">
+				<h1 className='text-xl font-semibold'>Tasks In Progress</h1>
+				<h2>2</h2>
+			</div>
+			<div className="boxShadow gradient3 flex flex-col w-1/3 justify-center items-center gap-6 p-6 bg-[var(--primary)] rounded-xl boxShadow">
+				<h1 className='text-xl font-semibold'>Tasks To Do</h1>
+				<h2>4</h2>
+			</div>
+		</div>
+		<LineChart finishedTasks={finishedTasks}/>
+		<TasksInProgress/>
+		</div>
 	)
 }

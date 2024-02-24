@@ -9,6 +9,7 @@
   --main: #555eab;
   --lightblue: #4db0e5;
   --red: #e06954;
+  --green: #61d800;
   /* color: #a0a0a0; */
 }
 
@@ -39,4 +40,11 @@ body {
 
 .gradient2 {
   background: linear-gradient(135deg, #4db0e5c0 0%, #1e2025);
+}
+
+.gradient3 {
+  background: linear-gradient(135deg, #05063f 0%, #4db0e550);
+}
+.gradient4 {
+  background: linear-gradient(-135deg, #05063f 0%, #4db0e550);
 }

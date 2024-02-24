@@ -7,6 +7,7 @@ import AuthLayout from "../layouts/AuthLayout";
 import Login from '../pages/Login/Login';
 import Register from '../pages/Register/Register';
 import Tasks from "../pages/Tasks/Tasks";
+import Home from './../pages/Home/Home';
 
 const router = createBrowserRouter([
   {
@@ -15,7 +16,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: '',
-        element: <Dashboard />
+        element: <Home />
       },
       {
         path: 'statistics',
