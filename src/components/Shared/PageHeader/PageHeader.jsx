@@ -16,15 +16,15 @@ export default function PageHeader() {
   const location = useLocation();
 
   return (
-    <div className="bg-[var(--primary)] px-6 py-3 flex justify-between items-center gap-10">
-      <div className="text-center w-full font-bold text-lg">
+    <div className="bg-[var(--primary)] px-6 py-3 flex justify-between items-center gap-3 lg:gap-10">
+      <div className="text-center w-full font-bold text-md sm:text-lg">
         {pageTitles[location.pathname]}
       </div>
       <PageHeaderTasks />
       <PageHeaderThemeSwitch />
       <div className="flex-shrink-0 flex gap-6 items-center">
         <PageHeaderProfile />
-        <span className="text-3xl cursor-pointer">
+        <span className="text-xl sm:text-3xl cursor-pointer">
           <FiLogOut />
         </span>
       </div>

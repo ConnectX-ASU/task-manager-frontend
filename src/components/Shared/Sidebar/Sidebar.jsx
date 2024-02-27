@@ -1,12 +1,12 @@
 import React from "react";
 import { MdSpaceDashboard } from "react-icons/md";
 import { ImStatsDots } from "react-icons/im";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { FaTasks } from "react-icons/fa";
 
 export default function Sidebar() {
   function linkActiveClass({ isActive }) {
-    let className = "p-3 rounded-lg block";
+    let className = "p-3 rounded-lg block transition-all duration-500 hover:bg-[var(--main)]";
     if (isActive) className += " bg-[var(--main)]";
 
     return className;
