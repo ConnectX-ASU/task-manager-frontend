@@ -1,0 +1,18 @@
+.top_gradient {
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  top: 0;
+  left: 0;
+  background: var(--main);
+  filter: blur(12rem);
+}
+.bottom_gradient {
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  bottom: 0;
+  right: 0;
+  background: var(--main);
+  filter: blur(15rem);
+}

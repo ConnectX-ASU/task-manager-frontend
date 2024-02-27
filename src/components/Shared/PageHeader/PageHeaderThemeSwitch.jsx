@@ -7,7 +7,6 @@ import { LuSunMoon } from "react-icons/lu";
 export default function PageHeaderThemeSwitch() {
   const theme = useStore((state) => state.theme);
   const setTheme = useStore((state) => state.setTheme);
-  console.log(theme);
 
   return (
     <Switch
