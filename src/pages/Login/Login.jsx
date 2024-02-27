@@ -5,19 +5,24 @@ import Gradient from "../../components/Shared/RegistrationGradient/Gradient.jsx"
 import Border from "../../components/Shared/RegistrationBorder/Border.jsx";
 import style from "../../components/Shared/CssModules/Registration.module.css";
 import Button from "../../components/Shared/RegistrationButton/Button.jsx";
+import {Link, useNavigate} from "react-router-dom";
+
+const validationSchema = Yup.object({
+  email: Yup.string()
+    .email("Email format doesnt valid")
+    .required("Email is required"),
+  password: Yup.string()
+    .matches(/^[A-Za-z0-9]{6,20}/, "Password should consist of letters and numbers, length should be between 6 and 20")
+    .required("Password is required"),
+});
+
 export default function Login() {
+  const navigate = useNavigate();
+
   function sendData(data) {
     console.log(data);
+    navigate("/");
   }
-
-  let validationSchema = Yup.object({
-    email: Yup.string()
-      .email("Email format doesnt valid")
-      .required("Email is required"),
-    password: Yup.string()
-      .matches(/^[A-Z][a-z0-9]{5,20}/, "Password is not valid")
-      .required("Password is required"),
-  });
   let formik = useFormik({
     initialValues: {
       email: "",
@@ -42,7 +47,7 @@ export default function Login() {
               <div className={`${style.form__group} ${style.field}  `}>
                 <input
                   type="input"
-                  className={`${style.form__error__field} mb-3 `}
+                  className={`${style.form__error__field} mb-3 text-sm `}
                   placeholder="Email"
                   onBlur={formik.handleBlur}
                   value={formik.values.email}
@@ -62,7 +67,7 @@ export default function Login() {
               <div className={`${style.form__group} ${style.field}  `}>
                 <input
                   type="input"
-                  className={`${style.form__field} mb-3 `}
+                  className={`${style.form__field} mb-3  `}
                   placeholder="Email"
                   onBlur={formik.handleBlur}
                   value={formik.values.email}
@@ -71,7 +76,7 @@ export default function Login() {
                   id="userEmail"
                   required
                 />
-                <label htmlFor="userEmail" className={`${style.form__label} `}>
+                <label htmlFor="userEmail" className={`${style.form__label}`}>
                   Email
                 </label>
               </div>
@@ -121,10 +126,10 @@ export default function Login() {
                 </label>
               </div>
             )}
-            <Button name={"Login"} />
+            <Button name={"Login"}/>
             <p className="text-[color:var(--lightblue)] ">
               Don't have account?
-              <span className="font-bold block">Register</span>
+              <Link to='/register' className="font-bold block hover:underline">Register</Link>
             </p>
           </Border>
         </form>

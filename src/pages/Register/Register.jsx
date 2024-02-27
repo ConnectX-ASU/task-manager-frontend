@@ -5,25 +5,32 @@ import style from "../../components/Shared/CssModules/Registration.module.css";
 import Gradient from "../../components/Shared/RegistrationGradient/Gradient.jsx";
 import Border from "../../components/Shared/RegistrationBorder/Border.jsx";
 import Button from "../../components/Shared/RegistrationButton/Button.jsx";
+import {Link, useNavigate} from "react-router-dom";
+
+const validationSchema = Yup.object({
+  name: Yup.string("Must be string")
+    .min(3, "Length more than 3")
+    .max(15, "Length less than 15")
+    .required("Name is required"),
+  email: Yup.string()
+    .email("Email format doesnt valid")
+    .required("Email is required"),
+  password: Yup.string()
+  .matches(/^[A-Za-z0-9]{6,20}/, "Password should consist of letters and numbers, length should be between 6 and 20")
+  .required("Password is required"),
+  rePassword: Yup.string()
+    .oneOf([Yup.ref("password")])
+    .required("Repassword is required"),
+});
+
 export default function Register() {
+  const navigate = useNavigate();
+
   function sendData(data) {
     console.log(data);
+    navigate("/");
   }
-  let validationSchema = Yup.object({
-    name: Yup.string("Must be string")
-      .min(3, "Length more than 3")
-      .max(15, "Length less than 15")
-      .required("Name is required"),
-    email: Yup.string()
-      .email("Email format doesnt valid")
-      .required("Email is required"),
-    password: Yup.string()
-      .matches(/^[A-Z][a-z0-9]{5,20}/, "Password is not valid")
-      .required("Password is required"),
-    rePassword: Yup.string()
-      .oneOf([Yup.ref("password")])
-      .required("Repassword is required"),
-  });
+
   let formik = useFormik({
     initialValues: {
       name: "",
@@ -47,10 +54,10 @@ export default function Register() {
           </h2>
 
           {formik.errors.name && formik.touched.name ? (
-            <div class={`${style.form__group} ${style.field}  `}>
+            <div className={`${style.form__group} ${style.field}  `}>
               <input
                 type="text"
-                class={`${style.form__error__field} mb-1`}
+                className={`${style.form__error__field} mb-1`}
                 onBlur={formik.handleBlur}
                 value={formik.values.name}
                 onChange={formik.handleChange}
@@ -59,7 +66,7 @@ export default function Register() {
                 id="userName"
                 required
               />
-              <label for="userName" class={`${style.form__label} `}>
+              <label htmlFor="userName" className={`${style.form__label} `}>
                 Name
               </label>
               <span className="text-[color:var(--red)]">
@@ -67,10 +74,10 @@ export default function Register() {
               </span>
             </div>
           ) : (
-            <div class={`${style.form__group} ${style.field}  `}>
+            <div className={`${style.form__group} ${style.field}  `}>
               <input
                 type="text"
-                class={`${style.form__field} mb-1`}
+                className={`${style.form__field} mb-1`}
                 onBlur={formik.handleBlur}
                 value={formik.values.name}
                 onChange={formik.handleChange}
@@ -79,7 +86,7 @@ export default function Register() {
                 id="userName"
                 required
               />
-              <label for="userName" class={`${style.form__label} `}>
+              <label htmlFor="userName" className={`${style.form__label} `}>
                 Name
               </label>
             </div>
@@ -163,10 +170,10 @@ export default function Register() {
             </div>
           )}
           {formik.errors.rePassword && formik.touched.rePassword ? (
-            <div class={`${style.form__group} ${style.field} `}>
+            <div className={`${style.form__group} ${style.field} `}>
               <input
                 type="password"
-                class={`${style.form__error__field} mb-1`}
+                className={`${style.form__error__field} mb-1`}
                 onBlur={formik.handleBlur}
                 value={formik.values.rePassword}
                 onChange={formik.handleChange}
@@ -175,7 +182,7 @@ export default function Register() {
                 id="userRePassowrd"
                 required
               />
-              <label for="userRePassword" class={`${style.form__label} `}>
+              <label htmlFor="userRePassword" className={`${style.form__label} `}>
                 Repeat Password
               </label>
               <span className="text-[color:var(--red)]">
@@ -183,10 +190,10 @@ export default function Register() {
               </span>
             </div>
           ) : (
-            <div class={`${style.form__group} ${style.field} `}>
+            <div className={`${style.form__group} ${style.field} `}>
               <input
                 type="password"
-                class={`${style.form__field} mb-1`}
+                className={`${style.form__field} mb-1`}
                 onBlur={formik.handleBlur}
                 value={formik.values.rePassword}
                 onChange={formik.handleChange}
@@ -195,15 +202,15 @@ export default function Register() {
                 id="userRePassowrd"
                 required
               />
-              <label for="userRePassword" class={`${style.form__label} `}>
-                Repeat Password
+              <label htmlFor ="userRePassword" className={`${style.form__label} `}>
+                Confirm Password
               </label>
             </div>
           )}
           <Button name={"Register"} />
           <p className="text-[color:var(--lightblue)] ">
             already have an account ?
-            <span className="font-bold block">Login</span>
+            <Link to='/login' className="font-bold block hover:underline">Log in</Link>
           </p>
         </Border>
       </form>

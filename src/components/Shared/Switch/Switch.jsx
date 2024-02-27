@@ -10,7 +10,6 @@ export default function Switch({
   position,
   loading,
 }) {
-  console.log(isOn ? colorOne : colorTwo);
   return (
     <div className={`flex justify-${position || "center"} items-center gap-3`}>
       {loading || status ? (
