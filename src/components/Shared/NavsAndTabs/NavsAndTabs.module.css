@@ -1,0 +1,15 @@
+.tabs{
+  border-bottom: var(--border);
+}
+
+.tab-content--border{
+  border: var(--border);
+  border-top: 0;
+}
+
+.tabs--rounded .tab:first-child{
+  border-top-left-radius: 5px;
+}
+.tabs--rounded .tab:last-child{
+  border-top-right-radius: 5px;
+}

@@ -5,10 +5,10 @@ import { Link } from "react-router-dom";
 export default function PageHeaderProfile() {
   return (
     <Link to="/profile" className="flex gap-3 items-center cursor-pointer">
-      <span className="text-3xl">
+      <span className="text-xl sm:text-3xl">
         <CgProfile />
       </span>
-      <span>Moamen Sherif</span>
+      <span className="hidden lg:block">Moamen Sherif</span>
     </Link>
   );
 }
