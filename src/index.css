@@ -48,3 +48,12 @@ body {
 .gradient4 {
   background: linear-gradient(-135deg, #05063f 0%, #4db0e550);
 }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
