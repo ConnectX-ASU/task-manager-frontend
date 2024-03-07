@@ -1,6 +1,6 @@
 import React from "react";
 import * as Yup from "yup";
-import { Formik, useFormik } from "formik";
+import { useFormik } from "formik";
 import Gradient from "../../components/Shared/RegistrationGradient/Gradient.jsx";
 import Border from "../../components/Shared/RegistrationBorder/Border.jsx";
 import style from "../../components/Shared/CssModules/Registration.module.css";
